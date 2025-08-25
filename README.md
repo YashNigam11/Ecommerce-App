@@ -162,14 +162,14 @@ This project is for educational and demonstration purposes.
 ### Core Features
 | Feature | Screenshot |
 |---------|------------|
-| **Onboarding** | ![Onboarding](assets/images/1.png) |
+| **Onboarding** | ![Onboarding](assets/images/1.jpg) |
 | **Login** | ![Login](assets/images/2.jpg) |
 | **Register** | ![Register](assets/images/3.png) |
-| **Profile** | ![Profile](assets/images/4.png) |
-| **Home Screen** | ![Home](assets/images/5.png) |
-| **Product Details** | ![Product](assets/images/6.png) ![Details](assets/images/7.jpg) |
-| **Offers** | ![Offers](assets/images/8.png) |
-| **Cart & Wishlist** | ![Cart](assets/images/9.png) |
+| **Profile** | ![Profile](assets/images/4.jpg) |
+| **Home Screen** | ![Home](assets/images/5.jpg) |
+| **Product Details** | ![Product](assets/images/6.jpg) ![Details](assets/images/7.jpg) |
+| **Offers** | ![Offers](assets/images/8.jpg) |
+| **Cart & Wishlist** | ![Cart](assets/images/9.jpg) |
 
 
 
