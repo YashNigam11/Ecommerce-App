@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function OffersScreen() {
   const [imageErrors, setImageErrors] = useState<{ [key: number]: boolean }>({});
@@ -36,46 +36,50 @@ export default function OffersScreen() {
   ];
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Special Offers</Text>
-        <Text style={styles.headerSubtitle}>Discover amazing deals and discounts</Text>
-      </View>
 
-      <View style={styles.offersContainer}>
-        {offers.map((offer) => (
-          <TouchableOpacity key={offer.id} style={styles.offerCard}>
-            {!imageErrors[offer.id] ? (
-              <Image 
-                source={{ uri: offer.image }} 
-                style={styles.offerImage}
-                onError={() => handleImageError(offer.id)}
-                defaultSource={require('../../assets/images/icon.png')}
-              />
-            ) : (
-              <View style={[styles.offerImage, styles.fallbackImage]}>
-                <Text style={styles.fallbackText}>{offer.title}</Text>
-              </View>
-            )}
-            <View style={styles.offerContent}>
-              <View style={styles.offerHeader}>
-                <Text style={styles.offerTitle}>{offer.title}</Text>
-                <View style={styles.discountBadge}>
-                  <Text style={styles.discountText}>{offer.discount}</Text>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Special Offers</Text>
+          <Text style={styles.headerSubtitle}>Discover amazing deals and discounts</Text>
+        </View>
+
+        <View style={styles.offersContainer}>
+          {offers.map((offer) => (
+            <TouchableOpacity key={offer.id} style={styles.offerCard}>
+              {!imageErrors[offer.id] ? (
+                <Image
+                  source={{ uri: offer.image }}
+                  style={styles.offerImage}
+                  onError={() => handleImageError(offer.id)}
+                  defaultSource={require('../../assets/images/icon.png')}
+                />
+              ) : (
+                <View style={[styles.offerImage, styles.fallbackImage]}>
+                  <Text style={styles.fallbackText}>{offer.title}</Text>
+                </View>
+              )}
+              <View style={styles.offerContent}>
+                <View style={styles.offerHeader}>
+                  <Text style={styles.offerTitle}>{offer.title}</Text>
+                  <View style={styles.discountBadge}>
+                    <Text style={styles.discountText}>{offer.discount}</Text>
+                  </View>
+                </View>
+                <Text style={styles.offerDescription}>{offer.description}</Text>
+                <View style={styles.offerFooter}>
+                  <Text style={styles.validUntil}>Valid until: {offer.validUntil}</Text>
+                  <TouchableOpacity style={styles.claimButton}>
+                    <Text style={styles.claimButtonText}>Claim Offer</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
-              <Text style={styles.offerDescription}>{offer.description}</Text>
-              <View style={styles.offerFooter}>
-                <Text style={styles.validUntil}>Valid until: {offer.validUntil}</Text>
-                <TouchableOpacity style={styles.claimButton}>
-                  <Text style={styles.claimButtonText}>Claim Offer</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </SafeAreaView>
     </ScrollView>
+
   );
 }
 

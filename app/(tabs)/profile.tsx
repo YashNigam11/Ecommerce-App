@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function ProfileScreen() {
   const handleLogout = () => {
@@ -20,149 +20,151 @@ export default function ProfileScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Profile</Text>
-        <TouchableOpacity style={styles.moreOptions}>
-          <Ionicons name="ellipsis-horizontal" size={24} color="#333" />
-        </TouchableOpacity>
-      </View>
+    <SafeAreaView style={styles.container} >
+      <View style={styles.container}>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Profile</Text>
+          <TouchableOpacity style={styles.moreOptions}>
+            <Ionicons name="ellipsis-horizontal" size={24} color="#333" />
+          </TouchableOpacity>
+        </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Profile Information Card */}
-        <View style={styles.profileCard}>
-          <View style={styles.profileInfo}>
-            <Image
-              source={{ uri: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face' }}
-              style={styles.profileImage}
-            />
-            <View style={styles.profileText}>
-              <Text style={styles.userName}>Olivia</Text>
-              <Text style={styles.userEmail}>Oliva@gmail.com</Text>
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+          {/* Profile Information Card */}
+          <View style={styles.profileCard}>
+            <View style={styles.profileInfo}>
+              <Image
+                source={{ uri: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face' }}
+                style={styles.profileImage}
+              />
+              <View style={styles.profileText}>
+                <Text style={styles.userName}>Olivia</Text>
+                <Text style={styles.userEmail}>Oliva@gmail.com</Text>
+              </View>
             </View>
+            <TouchableOpacity style={styles.editButton} onPress={handleEditProfile}>
+              <Ionicons name="pencil" size={20} color="#666" />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.editButton} onPress={handleEditProfile}>
-            <Ionicons name="pencil" size={20} color="#666" />
-          </TouchableOpacity>
-        </View>
 
-        {/* Account Settings Section */}
-        <View style={styles.menuCard}>
-          <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Address')}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="location-outline" size={20} color="#333" />
+          {/* Account Settings Section */}
+          <View style={styles.menuCard}>
+            <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Address')}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="location-outline" size={20} color="#333" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={styles.menuTitle}>Address</Text>
+                  <Text style={styles.menuSubtitle}>Manage your saved address</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={styles.menuTitle}>Address</Text>
-                <Text style={styles.menuSubtitle}>Manage your saved address</Text>
-              </View>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#999" />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Order History')}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="bag-outline" size={20} color="#333" />
+            <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Order History')}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="bag-outline" size={20} color="#333" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={styles.menuTitle}>Order History</Text>
+                  <Text style={styles.menuSubtitle}>View your past orders</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={styles.menuTitle}>Order History</Text>
-                <Text style={styles.menuSubtitle}>View your past orders</Text>
-              </View>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#999" />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Language')}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="globe-outline" size={20} color="#333" />
+            <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Language')}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="globe-outline" size={20} color="#333" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={styles.menuTitle}>Language</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={styles.menuTitle}>Language</Text>
-              </View>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#999" />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Notifications')}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="notifications-outline" size={20} color="#333" />
+            <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Notifications')}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="notifications-outline" size={20} color="#333" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={styles.menuTitle}>Notifications</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={styles.menuTitle}>Notifications</Text>
-              </View>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </TouchableOpacity>
-        </View>
+              <Ionicons name="chevron-forward" size={20} color="#999" />
+            </TouchableOpacity>
+          </View>
 
-        {/* Support & Legal Section */}
-        <View style={styles.menuCard}>
-          <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Contact Us')}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="chatbubble-outline" size={20} color="#333" />
+          {/* Support & Legal Section */}
+          <View style={styles.menuCard}>
+            <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Contact Us')}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="chatbubble-outline" size={20} color="#333" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={styles.menuTitle}>Contact Us</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={styles.menuTitle}>Contact Us</Text>
-              </View>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#999" />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Get Help')}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="help-circle-outline" size={20} color="#333" />
+            <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Get Help')}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="help-circle-outline" size={20} color="#333" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={styles.menuTitle}>Get Help</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={styles.menuTitle}>Get Help</Text>
-              </View>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#999" />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Privacy Policy')}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="shield-checkmark-outline" size={20} color="#333" />
+            <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Privacy Policy')}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="shield-checkmark-outline" size={20} color="#333" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={styles.menuTitle}>Privacy Policy</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={styles.menuTitle}>Privacy Policy</Text>
-              </View>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#999" />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Terms and Conditions')}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="settings-outline" size={20} color="#333" />
+            <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItem('Terms and Conditions')}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="settings-outline" size={20} color="#333" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={styles.menuTitle}>Terms and Conditions</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={styles.menuTitle}>Terms and Conditions</Text>
-              </View>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#999" />
-          </TouchableOpacity>
+              <Ionicons name="chevron-forward" size={20} color="#999" />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
-            <View style={styles.menuItemLeft}>
-              <View style={styles.menuIcon}>
-                <Ionicons name="log-out-outline" size={20} color="rgba(193, 70, 80, 1)" />
+            <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
+              <View style={styles.menuItemLeft}>
+                <View style={styles.menuIcon}>
+                  <Ionicons name="log-out-outline" size={20} color="rgba(193, 70, 80, 1)" />
+                </View>
+                <View style={styles.menuText}>
+                  <Text style={[styles.menuTitle, styles.logoutText]}>Log Out</Text>
+                </View>
               </View>
-              <View style={styles.menuText}>
-                <Text style={[styles.menuTitle, styles.logoutText]}>Log Out</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </View>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 }
 

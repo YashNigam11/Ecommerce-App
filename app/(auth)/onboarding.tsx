@@ -54,19 +54,16 @@ const styles = StyleSheet.create({
     width: IMAGE_WIDTH,
     height: IMAGE_HEIGHT,
     position: 'absolute',
-    top: -20,
+    top: -10,
     left: 0,
     // bottom:50
   },
   bottomContent: {
     position: "absolute",
     bottom: 0,
-    left: 30,
-    alignItems: 'center',
     paddingHorizontal: 32,
-    // paddingBottom: 50,
-    paddingTop: 20,
-    // marginTop: 100,
+    margin: "auto",
+    width: '100%',
   },
   brandName: {
     fontSize: 60,

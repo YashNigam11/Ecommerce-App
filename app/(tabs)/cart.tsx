@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {
   Alert,
   Image,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -81,7 +82,7 @@ export default function CartScreen() {
       removeItem(itemId);
       return;
     }
-    
+
     setCartItems(prevItems =>
       prevItems.map(item =>
         item.id === itemId ? { ...item, quantity: newQuantity } : item
@@ -151,7 +152,7 @@ export default function CartScreen() {
       Alert.alert('Empty Cart', 'Please add some items to your cart before checkout.');
       return;
     }
-    
+
     Alert.alert(
       'Checkout',
       'Proceed to checkout?',
@@ -164,16 +165,16 @@ export default function CartScreen() {
 
   const renderEmptyState = () => (
     <View style={styles.emptyContainer}>
-      <Ionicons 
-        name={activeTab === 'cart' ? 'bag-outline' : 'heart-outline'} 
-        size={64} 
-        color="#ccc" 
+      <Ionicons
+        name={activeTab === 'cart' ? 'bag-outline' : 'heart-outline'}
+        size={64}
+        color="#ccc"
       />
       <Text style={styles.emptyTitle}>
         {activeTab === 'cart' ? 'Your cart is empty' : 'Your wishlist is empty'}
       </Text>
       <Text style={styles.emptySubtitle}>
-        {activeTab === 'cart' 
+        {activeTab === 'cart'
           ? 'Add some beauty products to get started'
           : 'Save your favorite products for later'
         }
@@ -185,141 +186,143 @@ export default function CartScreen() {
   );
 
   return (
-    <View style={styles.container}>
-      {/* Tab Header */}
-      <View style={styles.tabHeader}>
-        <TouchableOpacity
-          style={[styles.tabButton, activeTab === 'cart' && styles.activeTabButton]}
-          onPress={() => setActiveTab('cart')}
-        >
-          <Text style={[styles.tabButtonText, activeTab === 'cart' && styles.activeTabButtonText]}>
-            Cart ({cartItems.length})
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.tabButton, activeTab === 'wishlist' && styles.activeTabButton]}
-          onPress={() => setActiveTab('wishlist')}
-        >
-          <Text style={[styles.tabButtonText, activeTab === 'wishlist' && styles.activeTabButtonText]}>
-            Wishlist ({wishlistItems.length})
-          </Text>
-        </TouchableOpacity>
-      </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        {/* Tab Header */}
+        <View style={styles.tabHeader}>
+          <TouchableOpacity
+            style={[styles.tabButton, activeTab === 'cart' && styles.activeTabButton]}
+            onPress={() => setActiveTab('cart')}
+          >
+            <Text style={[styles.tabButtonText, activeTab === 'cart' && styles.activeTabButtonText]}>
+              Cart ({cartItems.length})
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.tabButton, activeTab === 'wishlist' && styles.activeTabButton]}
+            onPress={() => setActiveTab('wishlist')}
+          >
+            <Text style={[styles.tabButtonText, activeTab === 'wishlist' && styles.activeTabButtonText]}>
+              Wishlist ({wishlistItems.length})
+            </Text>
+          </TouchableOpacity>
+        </View>
 
-      {activeTab === 'cart' ? (
-        <>
-          {cartItems.length === 0 ? (
-            renderEmptyState()
-          ) : (
-            <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-              <View style={styles.cartItemsContainer}>
-                {cartItems.map((item) => (
-                  <View key={item.id} style={styles.cartItem}>
-                    <Image source={{ uri: item.thumbnail }} style={styles.itemImage} />
-                    <View style={styles.itemInfo}>
-                      <Text style={styles.itemTitle} numberOfLines={2}>
-                        {item.title}
-                      </Text>
-                      <Text style={styles.itemBrand}>{item.brand}</Text>
-                      <Text style={styles.itemPrice}>${item.price}</Text>
-                    </View>
-                    
-                    <View style={styles.itemActions}>
-                      <View style={styles.quantityContainer}>
+        {activeTab === 'cart' ? (
+          <>
+            {cartItems.length === 0 ? (
+              renderEmptyState()
+            ) : (
+              <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+                <View style={styles.cartItemsContainer}>
+                  {cartItems.map((item) => (
+                    <View key={item.id} style={styles.cartItem}>
+                      <Image source={{ uri: item.thumbnail }} style={styles.itemImage} />
+                      <View style={styles.itemInfo}>
+                        <Text style={styles.itemTitle} numberOfLines={2}>
+                          {item.title}
+                        </Text>
+                        <Text style={styles.itemBrand}>{item.brand}</Text>
+                        <Text style={styles.itemPrice}>${item.price}</Text>
+                      </View>
+
+                      <View style={styles.itemActions}>
+                        <View style={styles.quantityContainer}>
+                          <TouchableOpacity
+                            style={styles.quantityButton}
+                            onPress={() => updateQuantity(item.id, item.quantity - 1)}
+                          >
+                            <Ionicons name="remove" size={16} color="#FF6B9D" />
+                          </TouchableOpacity>
+                          <Text style={styles.quantityText}>{item.quantity}</Text>
+                          <TouchableOpacity
+                            style={styles.quantityButton}
+                            onPress={() => updateQuantity(item.id, item.quantity + 1)}
+                          >
+                            <Ionicons name="add" size={16} color="#FF6B9D" />
+                          </TouchableOpacity>
+                        </View>
+
                         <TouchableOpacity
-                          style={styles.quantityButton}
-                          onPress={() => updateQuantity(item.id, item.quantity - 1)}
+                          style={styles.removeButton}
+                          onPress={() => removeItem(item.id)}
                         >
-                          <Ionicons name="remove" size={16} color="#FF6B9D" />
-                        </TouchableOpacity>
-                        <Text style={styles.quantityText}>{item.quantity}</Text>
-                        <TouchableOpacity
-                          style={styles.quantityButton}
-                          onPress={() => updateQuantity(item.id, item.quantity + 1)}
-                        >
-                          <Ionicons name="add" size={16} color="#FF6B9D" />
+                          <Ionicons name="trash-outline" size={20} color="#FF6B9D" />
                         </TouchableOpacity>
                       </View>
-                      
-                      <TouchableOpacity
-                        style={styles.removeButton}
-                        onPress={() => removeItem(item.id)}
-                      >
-                        <Ionicons name="trash-outline" size={20} color="#FF6B9D" />
-                      </TouchableOpacity>
                     </View>
+                  ))}
+                </View>
+
+                <View style={styles.summaryContainer}>
+                  <View style={styles.summaryRow}>
+                    <Text style={styles.summaryLabel}>Subtotal</Text>
+                    <Text style={styles.summaryValue}>${calculateSubtotal().toFixed(2)}</Text>
                   </View>
-                ))}
-              </View>
-
-              <View style={styles.summaryContainer}>
-                <View style={styles.summaryRow}>
-                  <Text style={styles.summaryLabel}>Subtotal</Text>
-                  <Text style={styles.summaryValue}>${calculateSubtotal().toFixed(2)}</Text>
-                </View>
-                <View style={styles.summaryRow}>
-                  <Text style={styles.summaryLabel}>Shipping</Text>
-                  <Text style={styles.summaryValue}>
-                    {calculateShipping() === 0 ? 'Free' : `$${calculateShipping().toFixed(2)}`}
-                  </Text>
-                </View>
-                <View style={styles.summaryRow}>
-                  <Text style={styles.summaryLabel}>Total</Text>
-                  <Text style={styles.summaryTotal}>${calculateTotal().toFixed(2)}</Text>
-                </View>
-
-                <TouchableOpacity style={styles.checkoutButton} onPress={handleCheckout}>
-                  <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
-                </TouchableOpacity>
-
-                <View style={styles.promoContainer}>
-                  <Text style={styles.promoText}>Free shipping on orders over $50</Text>
-                </View>
-              </View>
-            </ScrollView>
-          )}
-        </>
-      ) : (
-        <>
-          {wishlistItems.length === 0 ? (
-            renderEmptyState()
-          ) : (
-            <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-              <View style={styles.cartItemsContainer}>
-                {wishlistItems.map((item) => (
-                  <View key={item.id} style={styles.wishlistItem}>
-                    <Image source={{ uri: item.thumbnail }} style={styles.itemImage} />
-                    <View style={styles.itemInfo}>
-                      <Text style={styles.itemTitle} numberOfLines={2}>
-                        {item.title}
-                      </Text>
-                      <Text style={styles.itemBrand}>{item.brand}</Text>
-                      <Text style={styles.itemPrice}>${item.price}</Text>
-                    </View>
-                    
-                    <View style={styles.wishlistActions}>
-                      <TouchableOpacity
-                        style={styles.moveToCartButton}
-                        onPress={() => moveToCart(item)}
-                      >
-                        <Ionicons name="bag-add-outline" size={20} color="#FF6B9D" />
-                      </TouchableOpacity>
-                      
-                      <TouchableOpacity
-                        style={styles.removeButton}
-                        onPress={() => removeWishlistItem(item.id)}
-                      >
-                        <Ionicons name="heart-dislike-outline" size={20} color="#FF6B9D" />
-                      </TouchableOpacity>
-                    </View>
+                  <View style={styles.summaryRow}>
+                    <Text style={styles.summaryLabel}>Shipping</Text>
+                    <Text style={styles.summaryValue}>
+                      {calculateShipping() === 0 ? 'Free' : `$${calculateShipping().toFixed(2)}`}
+                    </Text>
                   </View>
-                ))}
-              </View>
-            </ScrollView>
-          )}
-        </>
-      )}
-    </View>
+                  <View style={styles.summaryRow}>
+                    <Text style={styles.summaryLabel}>Total</Text>
+                    <Text style={styles.summaryTotal}>${calculateTotal().toFixed(2)}</Text>
+                  </View>
+
+                  <TouchableOpacity style={styles.checkoutButton} onPress={handleCheckout}>
+                    <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+                  </TouchableOpacity>
+
+                  <View style={styles.promoContainer}>
+                    <Text style={styles.promoText}>Free shipping on orders over $50</Text>
+                  </View>
+                </View>
+              </ScrollView>
+            )}
+          </>
+        ) : (
+          <>
+            {wishlistItems.length === 0 ? (
+              renderEmptyState()
+            ) : (
+              <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+                <View style={styles.cartItemsContainer}>
+                  {wishlistItems.map((item) => (
+                    <View key={item.id} style={styles.wishlistItem}>
+                      <Image source={{ uri: item.thumbnail }} style={styles.itemImage} />
+                      <View style={styles.itemInfo}>
+                        <Text style={styles.itemTitle} numberOfLines={2}>
+                          {item.title}
+                        </Text>
+                        <Text style={styles.itemBrand}>{item.brand}</Text>
+                        <Text style={styles.itemPrice}>${item.price}</Text>
+                      </View>
+
+                      <View style={styles.wishlistActions}>
+                        <TouchableOpacity
+                          style={styles.moveToCartButton}
+                          onPress={() => moveToCart(item)}
+                        >
+                          <Ionicons name="bag-add-outline" size={20} color="#FF6B9D" />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                          style={styles.removeButton}
+                          onPress={() => removeWishlistItem(item.id)}
+                        >
+                          <Ionicons name="heart-dislike-outline" size={20} color="#FF6B9D" />
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  ))}
+                </View>
+              </ScrollView>
+            )}
+          </>
+        )}
+      </View>
+    </SafeAreaView>
   );
 }
 

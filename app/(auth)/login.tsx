@@ -4,8 +4,9 @@ import React, { useState } from 'react';
 import { Alert, Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('person@gmail.com');
+  const [password, setPassword] = useState('aiwillgo123');
+
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
@@ -92,7 +93,7 @@ export default function LoginScreen() {
           <View style={styles.socialContainer}>
             <TouchableOpacity style={styles.socialButton}>
               <View style={styles.googleIcon}>
-                <Text style={styles.googleText}>G</Text>
+                <Ionicons name="logo-google" size={20} color="blue" />
               </View>
             </TouchableOpacity>
             
@@ -104,7 +105,7 @@ export default function LoginScreen() {
             
             <TouchableOpacity style={styles.socialButton}>
               <View style={styles.facebookIcon}>
-                <Text style={styles.facebookText}>f</Text>
+                <Ionicons name="logo-facebook" size={20} color="#1877F2" />
               </View>
             </TouchableOpacity>
           </View>

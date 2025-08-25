@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   Alert,
   Image,
+  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -116,6 +117,7 @@ export default function ProductDetailScreen() {
   }
 
   return (
+    <SafeAreaView style={styles.container}>
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* Image Section with Navigation Buttons */}
       <View style={styles.imageContainerBackground}>
@@ -226,6 +228,7 @@ export default function ProductDetailScreen() {
         </View>
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 

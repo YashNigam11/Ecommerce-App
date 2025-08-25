@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface Product {
   id: number;
@@ -87,6 +88,7 @@ export default function HomeScreen() {
   return (
     <>
       {/* <StatusBar barStyle="dark-content" backgroundColor="white" /> */}
+      <SafeAreaView style={styles.loadingContainer} edges={['top']}>
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
@@ -142,6 +144,7 @@ export default function HomeScreen() {
           />
         </View>
       </View>
+      </SafeAreaView>
     </>
   );
 }
@@ -156,7 +159,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingTop: 20,
     // paddingTop: 60,
     // paddingBottom: 20,
     backgroundColor: 'white',
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
     color: 'rgba(204, 61, 61, 1)',
     // fontStyle: 'Regular',
     fontSize: 30,
-    lineHeight: 21,
+    lineHeight: 30,
     letterSpacing: -0.32,
     textAlign: 'center',
     
