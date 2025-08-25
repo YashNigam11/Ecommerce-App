@@ -21,7 +21,6 @@ A React Native beauty e-commerce application built with Expo Router, featuring a
 
 ### 🎯 **Special Features**
 - **Offers Screen**: Special deals and discounts with attractive offer cards
-- **Search & Filtering**: Product search functionality with filter options
 - **Responsive Design**: Scrollable pages with modern UI components
 
 ## Technical Stack
@@ -65,7 +64,7 @@ app/
 The app features 4 main tabs:
 1. **Profile** - User account and settings
 2. **Home** - Product browsing and search
-3. **Wishlist** - Saved items and cart management
+3. **Cart** - Saved items and cart management
 4. **Offers** - Special deals and promotions
 
 ## Getting Started
@@ -93,40 +92,6 @@ The app features 4 main tabs:
 - **TabBarIcon**: Custom tab bar icons using Ionicons
 - **CartItem**: Shopping cart item with quantity controls
 - **OfferCard**: Special offer display with claim buttons
-
-## Design System
-
-- **Primary Color**: #FF6B9D (Pink)
-- **Active Tab Color**: rgba(204, 61, 61, 1) (Red)
-- **Background Colors**: #f8f9fa (Light Gray), #ecc3d1 (Product Image Background)
-- **Text Colors**: #333 (Dark), #666 (Medium), #999 (Light)
-- **Status Bar**: Visible on all pages with proper spacing
-
-## Features Implemented
-
-✅ **Complete Authentication Flow**
-✅ **Product Listing & Search**
-✅ **Product Details with Image Gallery**
-✅ **Cart & Wishlist Management**
-✅ **User Profile & Settings**
-✅ **Special Offers Display**
-✅ **Responsive & Scrollable Design**
-✅ **TypeScript Support**
-✅ **Real API Integration**
-✅ **Tab Navigation Structure**
-✅ **Status Bar Visibility**
-✅ **Modern UI Components**
-
-## Current Implementation Status
-
-The app is **fully functional** with all core features implemented:
-- **Authentication screens** are complete and styled
-- **Product browsing** works with real API data
-- **Product details** show comprehensive information
-- **Cart/Wishlist** has full CRUD functionality
-- **Profile management** includes all necessary features
-- **Offers display** shows attractive deal cards
-- **Navigation** works seamlessly between all screens
 
 ## Future Enhancements
 
