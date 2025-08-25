@@ -156,3 +156,21 @@ This is a demonstration project showcasing React Native development skills with 
 ## License
 
 This project is for educational and demonstration purposes.
+
+## 📱 App Screenshots
+
+### Core Features
+| Feature | Screenshot |
+|---------|------------|
+| **Onboarding** | ![Onboarding](assets/images/1.png) |
+| **Login** | ![Login](assets/images/2.jpg) |
+| **Register** | ![Register](assets/images/3.png) |
+| **Profile** | ![Profile](assets/images/4.png) |
+| **Home Screen** | ![Home](assets/images/5.png) |
+| **Product Details** | ![Product](assets/images/6.png) ![Details](assets/images/7.jpg) |
+| **Offers** | ![Offers](assets/images/8.png) |
+| **Cart & Wishlist** | ![Cart](assets/images/9.png) |
+
+
+
+*Beautiful, modern UI showcasing the Viorra beauty e-commerce experience*
